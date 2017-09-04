@@ -1,11 +1,9 @@
 var util = require('util')
-
 var bleno = require('bleno')
-
-var BlenoPrimaryService = bleno.PrimaryService
 
 var HeartrateCharacteristic = require('./HeartRateCharacteristic')
 
+var BlenoPrimaryService = bleno.PrimaryService
 var heartrateCharacter = new HeartrateCharacteristic()
 
 function HeartRateService() {
@@ -18,9 +16,5 @@ function HeartRateService() {
 }
 
 util.inherits(HeartRateService, BlenoPrimaryService)
-
-HeartRateService.prototype.updateHrData = function(data) {
-  heartrateCharacter.updateHrData(data)
-}
 
 module.exports = HeartRateService

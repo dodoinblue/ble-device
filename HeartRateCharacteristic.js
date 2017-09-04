@@ -2,19 +2,12 @@ var util = require('util')
 
 var bleno = require('bleno')
 
-var Descriptor = bleno.Descriptor
 var Characteristic = bleno.Characteristic
 
 var HeartRateCharacteristic = function() {
   HeartRateCharacteristic.super_.call(this, {
     uuid: '2A37',
-    properties: ['read', 'notify'],
-    descriptors: [
-      new Descriptor({
-        uuid: '2901',
-        value: 'Heartrate readings'
-      })
-    ]
+    properties: ['read', 'notify']
   })
 
   // set default value

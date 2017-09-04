@@ -1,26 +1,19 @@
 var util = require('util')
-
 var bleno = require('bleno')
+var ConfigCharacteristic = require('./ConfigCharacteristic')
 
 var BlenoPrimaryService = bleno.PrimaryService
+var configCharacteristic = new ConfigCharacteristic()
 
-var HeartrateCharacteristic = require('./HeartRateCharacteristic')
-
-var heartrateCharacter = new HeartrateCharacteristic()
-
-function HeartRateService() {
-  HeartRateService.super_.call(this, {
-    uuid: '180D',
+function PrivateService() {
+  PrivateService.super_.call(this, {
+    uuid: '6d54c75c-cdb1-4a82-83e6-d62d04adeaf2',
     characteristics: [
-      heartrateCharacter
+      configCharacteristic
     ]
   })
 }
 
-util.inherits(HeartRateService, BlenoPrimaryService)
+util.inherits(PrivateService, BlenoPrimaryService)
 
-HeartRateService.prototype.updateHrData = function(data) {
-  heartrateCharacter.updateHrData(data)
-}
-
-module.exports = HeartRateService
+module.exports = PrivateService

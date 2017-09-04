@@ -1,7 +1,9 @@
 var bleno = require('bleno')
 var HeartRateService = require('./HeartRateService')
+var PrivateService = require('./PrivateService')
 
 var heartRateService = new HeartRateService()
+var privateService = new PrivateService()
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state)
@@ -18,7 +20,8 @@ bleno.on('advertisingStart', function(error) {
 
   if (!error) {
     bleno.setServices([
-      heartRateService
+      heartRateService,
+      privateService
     ], function(error) {
       console.log('setServices: ' + (error ? 'error ' + error : 'success'))
     })
